@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis ATHG NKRI - Edisi Spesial Remedial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+        :root {
+            --indo-red: #cc0000;
+            --indo-white: #ffffff;
+            --ancaman: #e74c3c;
+            --tantangan: #f39c12;
+            --hambatan: #3498db;
+            --gangguan: #2ecc71;
+            --dark: #1a1a2e;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(rgba(240, 242, 245, 0.85), rgba(240, 242, 245, 0.85)), 
+                        url('./batik.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, var(--indo-red) 50%, var(--indo-white) 50%);
+            width: 100%;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .header h1 { 
+            margin: 0; 
+            font-size: 4rem; 
+            font-weight: 800;
+            letter-spacing: 5px; 
+            color: white; 
+            text-shadow: 3px 3px 15px rgba(0,0,0,0.4);
+        }
+
+        .header p { 
+            margin: 25px 0 0 0; 
+            font-size: 1.4rem; 
+            color: var(--indo-red); 
+            font-weight: 800;
+            text-transform: uppercase;
+            background: white;
+            display: inline-block;
+            padding: 10px 40px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(204, 0, 0, 0.2);
+            border: 2px solid var(--indo-red);
+        }
+
+        /* Container & Cards */
+        .container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            max-width: 1400px;
+            width: 95%;
+            padding: 20px 20px 100px 20px;
+            box-sizing: border-box;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            flex: 1;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+
+        /* Fitur: Tabbed Detail Info (Revealed on Hover) */
+        .extra-info {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
+            background: #f8f9fa;
+            margin: 0 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #444;
+            text-align: left;
+        }
+
+        .card:hover .extra-info {
+            max-height: 200px;
+            opacity: 1;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px dashed var(--dark);
+        }
+
+        .img-wrapper { width: 100%; height: 180px; overflow: hidden; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .card:hover .card-img { transform: scale(1.1); }
+
+        .card-content {
+            padding: 35px 20px 15px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-top: -70px;
+            border: 6px solid white;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.5s;
+        }
+
+        .card:hover .icon-circle { transform: rotateY(360deg); }
+
+        /* Pewarnaan */
+        .ancaman { border-top: 8px solid var(--ancaman); }
+        .ancaman .icon-circle { background: var(--ancaman); }
+        .tantangan { border-top: 8px solid var(--tantangan); }
+        .tantangan .icon-circle { background: var(--tantangan); }
+        .hambatan { border-top: 8px solid var(--hambatan); }
+        .hambatan .icon-circle { background: var(--hambatan); }
+        .gangguan { border-top: 8px solid var(--gangguan); }
+        .gangguan .icon-circle { background: var(--gangguan); }
+
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 12px 25px;
+            border-radius: 100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            border: 1px solid var(--indo-red);
+        }
+
+        @media (max-width: 1100px) {
+            .container { flex-direction: column; align-items: center; }
+            .card { width: 100%; max-width: 450px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1 data-aos="fade-down">ATHG NKRI</h1>
+        <p data-aos="fade-up" data-aos-delay="200">Indonesia Tanah Airku</p>
+    </div>
+
+    <div class="container">
+        <div class="card ancaman" data-aos="fade-up" data-aos-delay="300">
+            <div class="img-wrapper"><img src="./download (1).jpg" class="card-img"></div>
+            <div class="card-content">
+                <div class="icon-circle"><i class="fas fa-exclamation-triangle"></i></div>
+                <h2>Ancaman</h2>
+                <p>Usaha luar/dalam negeri yang membahayakan kedaulatan.</p>
+            </div>
+            <div class="extra-info">
+                <strong><i class="fas fa-info-circle"></i> Contoh Nyata:</strong>
+                <ul>
+                    <li>Terorisme & Radikalisme</li>
+                    <li>Spionase (Pencurian data negara)</li>
+                    <li>Pemberontakan bersenjata</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card tantangan" data-aos="fade-up" data-aos-delay="500">
+            <div class="img-wrapper"><img src="./download.jpg" class="card-img"></div>
+            <div class="card-content">
+                <div class="icon-circle"><i class="fas fa-hiking"></i></div>
+                <h2>Tantangan</h2>
+                <p>Hal yang menggugah kemampuan bangsa dalam integritas.</p>
+            </div>
+            <div class="extra-info">
+                <strong><i class="fas fa-info-circle"></i> Contoh Nyata:</strong>
+                <ul>
+                    <li>Persaingan ekonomi global</li>
+                    <li>Era digital & Budaya asing</li>
+                    <li>Pemerataan kualitas SDM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card hambatan" data-aos="fade-up" data-aos-delay="700">
+            <div class="img-wrapper"><img src="./images (1).jpg" class="card-img"></div>
+            <div class="card-content">
+                <div class="icon-circle"><i class="fas fa-hand-paper"></i></div>
+                <h2>Hambatan</h2>
+                <p>Kendala dari <strong>dalam diri sendiri</strong> yang melemahkan.</p>
+            </div>
+            <div class="extra-info">
+                <strong><i class="fas fa-info-circle"></i> Contoh Nyata:</strong>
+                <ul>
+                    <li>Korupsi, Kolusi, Nepotisme (KKN)</li>
+                    <li>Rendahnya tingkat pendidikan</li>
+                    <li>Kurangnya rasa nasionalisme</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card gangguan" data-aos="fade-up" data-aos-delay="900">
+            <div class="img-wrapper"><img src="./images.jpg" class="card-img"></div>
+            <div class="card-content">
+                <div class="icon-circle"><i class="fas fa-bolt"></i></div>
+                <h2>Gangguan</h2>
+                <p>Faktor <strong>luar</strong> yang menghambat secara tidak terarah.</p>
+            </div>
+            <div class="extra-info">
+                <strong><i class="fas fa-info-circle"></i> Contoh Nyata:</strong>
+                <ul>
+                    <li>Penyebaran Berita Hoax</li>
+                    <li>Kesenjangan sosial ekonomi</li>
+                    <li>Provokasi isu SARA</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="music-player">
+        <p style="margin:0; font-size: 11px; font-weight:bold; color:var(--indo-red)"><i class="fas fa-music"></i> Indonesia Tanah Airku</p>
+        <audio controls loop style="height: 30px; width: 180px;">
+            <source src="indonesia.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
